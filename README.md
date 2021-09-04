@@ -1,6 +1,16 @@
 ### Laravel Fullstack App ( Laravel Blade, Laravel & MYSQL )
 
-#### Created by Chen Frederick for Development & Training Purpose
+#### A Color-Palette Website which Created by Chen Frederick for Development & Training Purpose
+
+---
+
+### Features :
+
+1. CRUD Backend with Integration in Frontend by MYSQL & Blade
+2. Restore & Archive Functionality ( Soft Delete )
+3. Plugin Integration + Tailwind.css + Fontawesome + SCSS
+4. Likes Functionality that Integrated with Owner's Email
+5. Components & Layout in laravel blade
 
 ---
 
@@ -8,16 +18,35 @@
 
 -   https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql-id
 -   https://laracasts.com/discuss/channels/laravel/easy-way-to-check-if-laravel-app-has-connection-with-existing-mysql-db
+-   setting up tailwind.css -> https://www.youtube.com/watch?v=MFh0Fd7BsjE&list=PL7Ip-iVFndN6WT7bRVyyigadDH1AOZ7V5&index=1&t=220s
+-   scss configuration in webpack.mix.js -> https://ralphjsmit.com/tailwind-sass-laravel/
+-   installation reference & docs upon styling development -> https://tailwindcss.com
+-   format laravel blade codes ( use laravel blade snippets ) -> https://stackoverflow.com/questions/46268211/how-to-format-laravel-blade-codes-in-visual-studio-code
+-   color palette data injection resource -> https://colorpalettes.net/color-palette-3983/
+-   rainbow navbar -> https://codepen.io/nohoid/pen/kIfto
+
+---
+
+### To Setup :
+
+-   `npm install`
+-   `composer install`
+-   `npm run dev`
 
 ---
 
 ### Personal Notes :
 
-#### Database Name : 'laravel_fullstack_app'
+-   after installed any plugin, you need to do `npm i` to synchronize between `package.json` & `composer.json`
+-   after changed `webpack.mix.js`, since laravel mix is webpack based, you’ll need to compile those files with `npm run dev`.
+-   while you're on development please run `php artisan serve` & `npm run watch`. 1 so you can visit localhost, the other 1 so you don't need to run `npm run dev` for every scss file change you made
+-   its good to have layout in laravel where you can put your link rel in <head> for just 1 time rather than put in all your component
 
-#### Database Username : 'laravel_fullstack_admin'
+#### Database Details :
 
-#### Database Password : 'laravel_fullstack_admin'
+-   Name : 'laravel_fullstack_app'
+-   Username : 'laravel_fullstack_admin'
+-   Password : 'laravel_fullstack_admin'
 
 ---
 
