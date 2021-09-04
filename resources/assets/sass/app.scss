@@ -1,0 +1,7 @@
+/* ./resources/sass/app.scss */
+@import "variables.scss";
+@import "global.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
