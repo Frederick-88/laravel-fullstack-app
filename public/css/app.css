@@ -8,6 +8,65 @@ body * {
   font-family: "Sora", "Arial", "Helvetica", "sans-serif";
 }
 
+body .navbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  padding: 25px 50px;
+  color: #ffffff;
+  font-weight: 600;
+  background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+  background-size: 1800% 1800%;
+  -webkit-animation: rainbow 18s ease infinite;
+          animation: rainbow 18s ease infinite;
+}
+
+@-webkit-keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+
+  50% {
+    background-position: 100% 19%;
+  }
+
+  100% {
+    background-position: 0% 82%;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 82%;
+  }
+
+  50% {
+    background-position: 100% 19%;
+  }
+
+  100% {
+    background-position: 0% 82%;
+  }
+}
+
+body .auth-container {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+body .auth-box {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 500px;
+  font-size: 0.875rem;
+}
+
+body .auth-box.box--big {
+  height: 700px;
+}
+
 /* ! tailwindcss v2.2.9 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
