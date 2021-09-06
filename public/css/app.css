@@ -67,6 +67,21 @@ body .auth-box.box--big {
   height: 700px;
 }
 
+body .palette-boxes__container {
+  max-height: 77vh;
+  overflow: auto;
+}
+
+body .palette-box {
+  position: relative;
+}
+
+body .palette-box .box__like-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
 /* ! tailwindcss v2.2.9 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */

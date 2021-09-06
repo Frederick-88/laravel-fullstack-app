@@ -18,10 +18,11 @@
     {{-- to receive laravel mix's scss/css configuration with the tailwind's one --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <title>Laravel Fullstack Color Palette Web</title>
+    <title>FD Laravel Color Palette Community</title>
 </head>
 
-<body class="bg-gray-200">
+<body class="bg-yellow-50">
+    <x-navbar />
     @yield('content')
 </body>
 

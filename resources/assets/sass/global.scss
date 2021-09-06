@@ -59,4 +59,22 @@ body {
             height: 700px;
         }
     }
+
+    // --------------
+    // Palette Community
+    // --------------
+    .palette-boxes__container {
+        max-height: 77vh;
+        overflow: auto;
+    }
+
+    .palette-box {
+        position: relative;
+
+        .box__like-badge {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+        }
+    }
 }
