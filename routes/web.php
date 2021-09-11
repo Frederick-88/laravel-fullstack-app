@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Database\Connection;
 
+use App\Http\Controllers\PaletteCommunityController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,29 +27,30 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/palette-community', function () {
-    return view('palette.index');
-})->name('palette-community');
-
+// example of implementing middleware inside controller ('auth')
+Route::get('/palette-community', [PaletteCommunityController::class, 'index'])->name('palette-community');
 Route::get('/creator', function () {
     return view('creator');
-})->name('creator');
+})
+->name('creator');
+// ->middleware('auth');
 
 // -------
 // Auth
 // -------
+Route::resource('register', RegisterController::class);
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+// example of implementing middleware inline ('guest')
+// so only unauthenticated users that can visit login page
+Route::name('login')
+->get('/login', [LoginController::class, 'index'])
+->middleware('guest');
 
-Route::get('/logout', function () {
-    //
-})->name('logout');
+Route::name('login')
+->post('/login', [LoginController::class, 'store'])
+->middleware('guest');
 
-Route::get('/register', function () {
-    return view('auth.register');
-})->name('register');
+Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 // -------
 // DB Connection Test Route + Laravel Welcome Blade Page

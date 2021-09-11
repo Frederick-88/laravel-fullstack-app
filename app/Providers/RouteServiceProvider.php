@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/palette-community'; // redirect to this page if it's authenticated
 
     /**
      * The controller namespace for the application.

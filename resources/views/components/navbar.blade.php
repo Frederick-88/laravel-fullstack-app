@@ -15,6 +15,7 @@
         </li>
         <li>
             <form action="{{ route('logout') }}" method="post" class="p-3 inline">
+                {{-- always use csrf for security purpose --}}
                 @csrf
                 <button type="submit" class="font-semibold hover:text-gray-300">Logout</button>
             </form>
