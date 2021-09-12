@@ -30,12 +30,14 @@
         </div>
 
         <div class="text-gray-500">
-            <p class="mb-6">FD-Laravel-Color-Palette-Community is made by Frederick, both in Frontend (Laravel Blade +
-                Tailwind.css) & Backend
-                (MYSQL + Laravel). Deployed to (Heroku) to be accessed publicly by anyone in the world.</p>
+            <p class="mb-6">FD-Laravel-Color-Palette-Community is made by Frederick, both in Frontend <br />
+                (Laravel Blade + Tailwind.css) & Backend (MYSQL + Laravel). Deployed to (Heroku) to be accessed publicly
+                by anyone in the world.</p>
 
-            <p>He is a MERN & MEVN Fullstack Javascript Developer who thrives in fast-paced environment, keen to learn
-                and pay attention to detail. See more about his skills & projects in his Linkedin!</p>
+            <p>Let's connect with him in Linkedin!</p>
+
+            {{-- <p>He is a MERN & MEVN Fullstack Javascript Developer who thrives in fast-paced environment, keen to learn
+                and pay attention to detail. See more about his skills & projects in his Linkedin!</p> --}}
         </div>
     </div>
 </div>

@@ -13,7 +13,6 @@ body {
         margin-bottom: 25px;
         padding: 25px 50px;
         color: $white;
-        font-weight: 600;
         background: linear-gradient(
             124deg,
             #ff2400,
@@ -71,10 +70,14 @@ body {
     .palette-box {
         position: relative;
 
-        .box__like-badge {
+        .box__time-sign {
             position: absolute;
             top: -10px;
             left: -10px;
         }
+    }
+
+    .color-box {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     }
 }
