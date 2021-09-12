@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+
+// model
+use App\Models\Palette;
 
 class PaletteCommunityController extends Controller
 {
@@ -11,8 +15,40 @@ class PaletteCommunityController extends Controller
         $this->middleware(['auth']); // only authenticated users can come in
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('palette.index');
+        $isShowArchivedOnly = filter_var($request->input('is_archived', false), FILTER_VALIDATE_BOOLEAN); // for a fix boolean output, e.g true instead of "true"
+        $paletteList = Palette::orderBy('created_at', 'desc')
+        ->when($isShowArchivedOnly, function($query) {
+            // only get the archived palettes of the user itself
+            return $query->onlyTrashed()->where('user_id', Auth::user()->id);
+        })
+        ->paginate(5);
+
+        return view('palette.index', [
+            'paletteList' => $paletteList,
+            'selectedPalette' => null,
+            'isEdit' => false,
+            'isViewingArchives' => $isShowArchivedOnly,
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $paletteList = Palette::orderBy('created_at', 'desc')->paginate(5);
+        $selectedPalette = Palette::findOrFail($id);
+
+        return view('palette.index', [
+            'paletteList' => $paletteList,
+            'selectedPalette' => $selectedPalette,
+            'isEdit' => true,
+            'isViewingArchives' => false,
+        ]);
     }
 }
