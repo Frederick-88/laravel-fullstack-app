@@ -42,4 +42,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // foreign & primary key, eloquent relationship laravel
+    // source -> https://laravel.com/docs/8.x/eloquent-relationships
+    public function palettes()
+    {
+        return $this->hasMany(Palette::class);
+    }
 }
