@@ -29,10 +29,11 @@
 
     <div class="w-2/5 bg-white rounded-xl p-8 ml-6">
         @if ($isViewingArchives)
-        <div class="d-flex flex-col items-center">
-            <h4 class="text-xl font-semibold text-center text-yellow-500 tracking-wider">Archives</h4>
-            <img class="w-full" src="{{ asset('images/archived-illustration.jpg') }}" alt="archived" />
-            <p class="text-gray-500 text-md">This is where your archived palettes at, you can do restore or delete
+        <div class="flex flex-col items-center">
+            <h4 class="text-xl font-semibold text-yellow-500 tracking-wider">Archives</h4>
+            <img class="w-full max-w-sm" src="{{ asset('images/archived-illustration.jpg') }}" alt="archived" />
+            <p class="text-gray-500 text-md">This is where your archived palettes at, you can do restore or
+                delete
                 the palette permanently.</p>
             <a href="/palette-community?is_archived=false"
                 class="block mt-5 w-full bg-yellow-500 text-white text-center text-sm p-3 rounded font-medium w-1/2 hover:bg-gray-100 hover:text-yellow-500">

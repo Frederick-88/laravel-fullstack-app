@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Auth;
+
+// email
+use App\Mail\AddPaletteEmail;
 
 // model
 use App\Models\Palette;
@@ -56,6 +61,9 @@ class PaletteController extends Controller
             'title' => $request->title,
             'colors' => $colorsObject
         ]);
+
+        $current_loggedin_user = Auth::user();
+        Mail::to($current_loggedin_user->email)->send(new AddPaletteEmail($current_loggedin_user->name, $request->title));
 
         return back();
     }
