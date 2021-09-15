@@ -9,10 +9,25 @@
 1. CRUD Backend with Integration in Frontend by MYSQL & Blade
 2. Restore & Archive Functionality ( Soft Delete )
 3. Plugin Integration + Tailwind.css + Fontawesome + SCSS
-4. Likes Functionality that Integrated with Owner's Email
+4. After Create a Color palette will receive email
 5. Components & Layout in laravel blade
+6. Deployment to Heroku ( undone )
+7. Notification ( undone )
 
 ---
+
+### DB Column :
+
+1. users
+
+-   created_at
+
+2. palette
+
+-   id
+-   title
+-   colors (object)
+-   user_id (foreign_key)
 
 ### References :
 
@@ -24,6 +39,8 @@
 -   format laravel blade codes ( use laravel blade snippets ) -> https://stackoverflow.com/questions/46268211/how-to-format-laravel-blade-codes-in-visual-studio-code
 -   color palette data injection resource -> https://colorpalettes.net/color-palette-3983/
 -   rainbow navbar -> https://codepen.io/nohoid/pen/kIfto
+-   for email setup, need to lower security -> https://stackoverflow.com/questions/33939393/failed-to-authenticate-on-smtp-server-error-using-gmail
+-   production level email blast -> https://laracasts.com/discuss/channels/laravel/the-mail-didnt-send-to-my-gmail
 
 ---
 
@@ -41,6 +58,33 @@
 -   after changed `webpack.mix.js`, since laravel mix is webpack based, you’ll need to compile those files with `npm run dev`.
 -   while you're on development please run `php artisan serve` & `npm run watch`. 1 so you can visit localhost, the other 1 so you don't need to run `npm run dev` for every scss file change you made
 -   its good to have layout in laravel where you can put your link rel in <head> for just 1 time rather than put in all your component
+-   for email setup, here are some examples :
+
+##### For Mailtrap (local/testing level)
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=30205bc21626b8
+MAIL_PASSWORD=e211bdfef34f72
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=frederick@fdpalette.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+##### For Gmail (production level)
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME="YOUR_EMAIL_ADDRESS"
+MAIL_PASSWORD="YOUR_EMAIL_PASSWORD"
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="PREFERED_SENDER_EMAIL"
+MAIL_FROM_NAME="${APP_NAME}"
+```
 
 #### Database Details :
 
