@@ -41,6 +41,8 @@
 -   rainbow navbar -> https://codepen.io/nohoid/pen/kIfto
 -   for email setup, need to lower security -> https://stackoverflow.com/questions/33939393/failed-to-authenticate-on-smtp-server-error-using-gmail
 -   production level email blast -> https://laracasts.com/discuss/channels/laravel/the-mail-didnt-send-to-my-gmail
+-   heroku deployment ( 1 of source ) -> https://devcenter.heroku.com/articles/deploying-php
+-   heroku deployment issue on asset that use http -> https://stackoverflow.com/questions/34378122/load-blade-assets-with-https-in-laravel
 
 ---
 

@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        if(config('app.env') === 'production') {
+            // enforce https, solving issue on production at heroku that asset(), etc still using http
+            // source -> https://stackoverflow.com/questions/34378122/load-blade-assets-with-https-in-laravel
+            \URL::forceScheme('https');
+        }
     }
 }
