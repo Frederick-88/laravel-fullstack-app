@@ -2,6 +2,8 @@
 
 #### A Color-Palette Website which Created by Chen Frederick for Development & Training Purpose
 
+#### Is Live on https://laravel-fd-color-palette.herokuapp.com/ !!
+
 ---
 
 ### Features :
@@ -9,9 +11,9 @@
 1. CRUD Backend with Integration in Frontend by MYSQL & Blade
 2. Restore & Archive Functionality ( Soft Delete )
 3. Plugin Integration + Tailwind.css + Fontawesome + SCSS
-4. After Create a Color palette will receive email
+4. After Create a Color palette will receive email ( update format & route to real url )
 5. Components & Layout in laravel blade
-6. Deployment to Heroku ( undone )
+6. Deployment to Heroku
 7. Notification ( undone )
 
 ---
@@ -43,6 +45,9 @@
 -   production level email blast -> https://laracasts.com/discuss/channels/laravel/the-mail-didnt-send-to-my-gmail
 -   heroku deployment ( 1 of source ) -> https://devcenter.heroku.com/articles/deploying-php
 -   heroku deployment issue on asset that use http -> https://stackoverflow.com/questions/34378122/load-blade-assets-with-https-in-laravel
+-   further heroku + laravel + database deployment, can see from your youtube & heroku -> laravel-fd-color-palette -> settings -> config vars (env settings)
+-   production mailing issue -> https://medium.com/graymatrix/using-gmail-smtp-server-to-send-email-in-laravel-91c0800f9662
+-   production mailing issue -> https://laracasts.com/discuss/channels/laravel/failed-to-authenticate-on-smtp-server-with-username-my-account-at-gmailcom-using-3-possible-authenticators-authenticator-login-returned-expected-response-code-235-but-got-code-534-with-message-534-579-application-specific-password-required
 
 ---
 
@@ -87,6 +92,8 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="PREFERED_SENDER_EMAIL"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
+
+-   your gmail app password for mailing ( production ) = mevuamcszfeofgyb
 
 #### Database Details :
 
