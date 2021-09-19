@@ -35,10 +35,10 @@ class LoginController extends Controller
         $isRemember = $request->remember;
 
         if (!auth()->attempt($request->only('email', 'password'), $isRemember)) {
-            return back()->with('status', 'Invalid login details');
+            return $this->redirectWithMessage('error','Invalid login details.');
         }
 
-        return redirect()->route('palette-community');
+        return $this->redirectWithMessage('success','Welcome to FD Palette Community.','/palette-community');
     }
 
     /**
@@ -84,5 +84,31 @@ class LoginController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function redirectWithMessage($type, $message, $requestedRoute = '')
+    {
+        // method to redirect back + query url
+        // e.g "http://localhost:8000/palette-community?res_type=success&response=Successfully+shared+palette."
+        $previousUrl = app('url')->previous();
+        $hasQueryUrl = str_contains($previousUrl, '?') || false;
+        $hasIsArchivedQuery = str_contains($previousUrl, 'is_archived') || false;
+
+        $getCleanUrl = $previousUrl;
+        if($hasQueryUrl){
+            $getCleanUrl = explode('?',$previousUrl)[0]; // clean url without any query string
+        }
+
+        // prefix url redirects avoid duplicate query url
+        $prefixUrl = $previousUrl.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        if ($hasQueryUrl && $hasIsArchivedQuery) {
+            $prefixUrl = $getCleanUrl.'?is_archived=true&'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        } else if($hasQueryUrl) {
+            $prefixUrl = $getCleanUrl.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        } else if (!!$requestedRoute) {
+            $prefixUrl = $requestedRoute.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        }
+
+        return redirect()->to($prefixUrl);
     }
 }
