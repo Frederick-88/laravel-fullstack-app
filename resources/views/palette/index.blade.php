@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="px-20 mt-16 flex">
+<div class="relative-container px-20 pt-14 flex">
+    <x-alert />
+
     <div class="palette-boxes__container w-3/5 bg-white rounded-xl p-8 mr-6">
         <div class="header mb-8">
             <div class="flex items-center mb-6">
@@ -21,7 +23,9 @@
         <x-paletteItem :isEdit="$isEdit" :isViewingArchives="$isViewingArchives" :palette="$palette" />
         @endforeach
 
+        @if (!$isViewingArchives)
         {{ $paletteList->links() }}
+        @endif
         @else
         <p class="text-gray-500 text-center">No Any Color Palettes Found.</p>
         @endif
@@ -35,7 +39,7 @@
             <p class="text-gray-500 text-md">This is where your archived palettes at, you can do restore or
                 delete
                 the palette permanently.</p>
-            <a href="/palette-community?is_archived=false"
+            <a href="{{ route('palette-community') }}"
                 class="block mt-5 w-full bg-yellow-500 text-white text-center text-sm p-3 rounded font-medium w-1/2 hover:bg-gray-100 hover:text-yellow-500">
                 Back
             </a>
