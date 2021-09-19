@@ -19,11 +19,14 @@ class PaletteCommunityController extends Controller
     {
         $isShowArchivedOnly = filter_var($request->input('is_archived', false), FILTER_VALIDATE_BOOLEAN); // for a fix boolean output, e.g true instead of "true"
         $paletteList = Palette::orderBy('created_at', 'desc')
-        ->when($isShowArchivedOnly, function($query) {
-            // only get the archived palettes of the user itself
-            return $query->onlyTrashed()->where('user_id', Auth::user()->id);
-        })
-        ->paginate(5);
+            ->when($isShowArchivedOnly, function($query) {
+                // only get the archived palettes of the user itself
+                return $query->onlyTrashed()->where('user_id', Auth::user()->id)->get();
+            })
+            ->when(!$isShowArchivedOnly, function($query) {
+                // todo: when in archived page that has query string, how when paginate can keep the query string along with ?page params.
+                return $query->paginate(5);
+            });
 
         return view('palette.index', [
             'paletteList' => $paletteList,
