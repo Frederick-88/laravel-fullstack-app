@@ -5,7 +5,7 @@
     <img class="w-4/12" src="{{ asset('images/palette-icon.png') }}" alt="palette" />
 
     <div class="w-8/12 text-right pl-8">
-        <h4 class="text-6xl font-bold text-yellow-400">Everyone can have a good color taste.</h4>
+        <h4 class="text-6xl font-bold text-yellow-400 leading-tight">Everyone can have a good color taste.</h4>
         <p class="subtitle text-gray-500 mt-10 mb-2 text-lg">Become a part of our community where thousands of
             people
             share
