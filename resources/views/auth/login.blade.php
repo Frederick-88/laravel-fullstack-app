@@ -1,17 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="auth-container">
+<div class="relative-container auth-container">
+    <x-alert />
+
     <div class="auth-box">
         <div class="w-4/12 bg-white p-10 rounded-tl-md rounded-bl-md align-center">
             <h4 class="text-xl font-semibold text-center text-yellow-500 mb-6 tracking-wider">Login</h4>
 
-            @if (session('status'))
-            <div class="bg-red-500 p-4 rounded-lg mb-6 text-white text-center">
-                {{ session('status') }}
-            </div>
-            @endif
-
+            {{-- validation errors in laravel like you see below -> https://laravel.com/docs/8.x/validation --}}
+            {{-- using value {{old}} so when error the value won't disappear --}}
             <form action="{{ route('login') }}" method="post">
                 @csrf
 

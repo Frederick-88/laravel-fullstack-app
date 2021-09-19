@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="auth-container">
+<div class="relative-container auth-container">
+    <x-alert />
+
     <div class="auth-box box--big">
         <div class="w-4/12 bg-white p-10 rounded-tl-md rounded-bl-md">
             <h4 class="text-xl font-semibold text-center text-yellow-500 mb-6 tracking-wider">Register</h4>
