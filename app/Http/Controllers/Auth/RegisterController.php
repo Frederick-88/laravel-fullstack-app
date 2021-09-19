@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 use Auth;
 use DB;
@@ -13,6 +14,9 @@ use Log;
 
 // models
 use App\Models\User;
+
+// email
+use App\Mail\WelcomeEmail;
 
 class RegisterController extends Controller
 {
@@ -69,7 +73,10 @@ class RegisterController extends Controller
                 'password' => $request->password
             ]);
 
-            return Redirect::route('home');
+            $current_loggedin_user = Auth::user();
+            Mail::to($current_loggedin_user->email)->send(new WelcomeEmail($current_loggedin_user->name));
+
+            return $this->redirectWithMessage('success','Welcome to FD Palette Community.','/palette-community');
         } catch (\Exception $error) {
             DB::rollBack();
             Log::error($error);
@@ -120,5 +127,31 @@ class RegisterController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function redirectWithMessage($type, $message, $requestedRoute = '')
+    {
+        // method to redirect back + query url
+        // e.g "http://localhost:8000/palette-community?res_type=success&response=Successfully+shared+palette."
+        $previousUrl = app('url')->previous();
+        $hasQueryUrl = str_contains($previousUrl, '?') || false;
+        $hasIsArchivedQuery = str_contains($previousUrl, 'is_archived') || false;
+
+        $getCleanUrl = $previousUrl;
+        if($hasQueryUrl){
+            $getCleanUrl = explode('?',$previousUrl)[0]; // clean url without any query string
+        }
+
+        // prefix url redirects avoid duplicate query url
+        $prefixUrl = $previousUrl.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        if ($hasQueryUrl && $hasIsArchivedQuery) {
+            $prefixUrl = $getCleanUrl.'?is_archived=true&'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        } else if($hasQueryUrl) {
+            $prefixUrl = $getCleanUrl.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        } else if (!!$requestedRoute) {
+            $prefixUrl = $requestedRoute.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        }
+
+        return redirect()->to($prefixUrl);
     }
 }
