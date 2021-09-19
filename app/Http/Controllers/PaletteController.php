@@ -65,7 +65,7 @@ class PaletteController extends Controller
         $current_loggedin_user = Auth::user();
         Mail::to($current_loggedin_user->email)->send(new AddPaletteEmail($current_loggedin_user->name, $request->title));
 
-        return back();
+        return $this->redirectWithMessage('success','Successfully shared palette.');
     }
 
     /**
@@ -104,9 +104,10 @@ class PaletteController extends Controller
         ]);
 
         $selectedPalette = Palette::where('id', $id)->first();
+        $oldPaletteTitle = $selectedPalette->title;
 
         if(!$selectedPalette) {
-            return back()->with('status', 'Invalid Palette Id.');
+            return $this->redirectWithMessage('success', 'Invalid palette id.');
         }
 
         // default color fallback is 'black'.
@@ -125,7 +126,8 @@ class PaletteController extends Controller
             'colors' => $colorsObject
         ]);
 
-        return redirect()->route('palette-community');
+        $responseMessage = 'Successfully edited ' . '"' . $oldPaletteTitle . '"' . ' palette.';
+        return $this->redirectWithMessage('success', $responseMessage, '/palette-community');
     }
 
     /**
@@ -140,13 +142,14 @@ class PaletteController extends Controller
         $selectedPalette = Palette::where('id', $id)->onlyTrashed()->first();
 
         if(!$selectedPalette) {
-            return back()->with('status', 'Invalid Palette Id.');
+            return $this->redirectWithMessage('success', 'Invalid palette id.');
         }
 
         $this->authorize('authorized', $selectedPalette); // part of palettePolicy to make sure only the owner of a palette that can restore it.
 
         $selectedPalette->restore();
-        return back();
+
+        return $this->redirectWithMessage('success', 'Successfully restored palette.');
     }
 
     /**
@@ -165,17 +168,47 @@ class PaletteController extends Controller
             ->first();
 
         if(!$selectedPalette) {
-            return back()->with('status', 'Invalid Palette Id.');
+            return $this->redirectWithMessage('success', 'Invalid palette id.');
         }
 
         $this->authorize('authorized', $selectedPalette); // part of palettePolicy to make sure only the owner of a palette that can delete it.
 
+        $deleteText = '';
         if($isForceDelete){
             $selectedPalette->forceDelete();
+            $deleteText = 'deleted';
         } else {
             $selectedPalette->delete();
+            $deleteText = 'archived';
         }
 
-        return back();
+        $responseMessage = 'Successfully ' . $deleteText . ' palette.';
+        return $this->redirectWithMessage('success', $responseMessage);
+    }
+
+    private function redirectWithMessage($type, $message, $requestedRoute = '')
+    {
+        // method to redirect back + query url
+        // e.g "http://localhost:8000/palette-community?res_type=success&response=Successfully+shared+palette."
+        $previousUrl = app('url')->previous();
+        $hasQueryUrl = str_contains($previousUrl, '?') || false;
+        $hasIsArchivedQuery = str_contains($previousUrl, 'is_archived') || false;
+
+        $getCleanUrl = $previousUrl;
+        if($hasQueryUrl){
+            $getCleanUrl = explode('?',$previousUrl)[0]; // clean url without any query string
+        }
+
+        // prefix url redirects avoid duplicate query url
+        $prefixUrl = $previousUrl.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        if ($hasQueryUrl && $hasIsArchivedQuery) {
+            $prefixUrl = $getCleanUrl.'?is_archived=true&'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        } else if($hasQueryUrl) {
+            $prefixUrl = $getCleanUrl.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        } else if (!!$requestedRoute) {
+            $prefixUrl = $requestedRoute.'?'. http_build_query(['res_type'=>$type,'response'=>$message]);
+        }
+
+        return redirect()->to($prefixUrl);
     }
 }
