@@ -3,7 +3,7 @@
 <br>
 <br>
 
-Your {{ $palette_title }} palette idea has been shared to our community!<br>
+Your "{{ $palette_title }}" palette idea has been shared to our community!<br>
 Thousands of people in our community will see your palette idea.
 
 @component('mail::button', ['url' => route('palette-community')])

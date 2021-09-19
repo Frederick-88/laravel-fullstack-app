@@ -66,6 +66,59 @@ body .auth-box.box--big {
   height: 700px;
 }
 
+body .relative-container {
+  position: relative;
+}
+
+body .relative-container .global-alert__container {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  -webkit-animation: fadein 1.5s;
+          animation: fadein 1.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+body .relative-container .global-alert {
+  position: relative;
+  max-width: 400px;
+  min-width: 300px;
+}
+
+body .relative-container .title {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+body .relative-container .close-icon {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
 body .palette-boxes__container {
   max-height: 77vh;
   overflow: auto;
