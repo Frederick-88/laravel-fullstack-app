@@ -12,6 +12,7 @@
             {{-- using value {{old}} so when error the value won't disappear --}}
             <form action="{{ route('register.store') }}" method="post">
                 @csrf
+
                 <div class="mb-4">
                     <label class="text-gray-600" for="name">Name</label>
                     <input type="text" name="name" id="name" placeholder="Your name"

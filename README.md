@@ -11,10 +11,11 @@
 1. CRUD Backend with Integration in Frontend by MYSQL & Blade
 2. Restore & Archive Functionality ( Soft Delete )
 3. Plugin Integration + Tailwind.css + Fontawesome + SCSS
-4. After Create a Color palette will receive email ( update format & route to real url )
+4. After Register & Create a Color palette will receive email
 5. Components & Layout in laravel blade
 6. Deployment to Heroku
-7. Notification ( undone )
+7. Reusable Notification Component
+8. Laravel Eloquent Relationship
 
 ---
 
@@ -22,14 +23,25 @@
 
 1. users
 
+-   id
+-   name
+-   username
+-   email
+-   password
+-   remember_token
+-   email_verified_at
 -   created_at
+-   updated_at
 
-2. palette
+2. palette ( soft delete table - with archive & restore feature )
 
 -   id
+-   user_id (foreign_key)
 -   title
 -   colors (object)
--   user_id (foreign_key)
+-   created_at
+-   updated_at
+-   deleted_at
 
 ### References :
 
@@ -48,6 +60,7 @@
 -   further heroku + laravel + database deployment, can see from your youtube & heroku -> laravel-fd-color-palette -> settings -> config vars (env settings)
 -   production mailing issue -> https://medium.com/graymatrix/using-gmail-smtp-server-to-send-email-in-laravel-91c0800f9662
 -   production mailing issue -> https://laracasts.com/discuss/channels/laravel/failed-to-authenticate-on-smtp-server-with-username-my-account-at-gmailcom-using-3-possible-authenticators-authenticator-login-returned-expected-response-code-235-but-got-code-534-with-message-534-579-application-specific-password-required
+-   blade get current route -> https://stackoverflow.com/questions/17591181/how-to-get-the-current-url-inside-if-statement-blade-in-laravel-4
 
 ---
 
@@ -92,8 +105,6 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="PREFERED_SENDER_EMAIL"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-
--   your gmail app password for mailing ( production ) = mevuamcszfeofgyb
 
 #### Database Details :
 
@@ -167,3 +178,5 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+-   your gmail app password for mailing ( production ) = mevuamcszfeofgyb
