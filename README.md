@@ -21,27 +21,17 @@
 
 ### DB Column :
 
-1. users
-
--   id
--   name
--   username
--   email
--   password
--   remember_token
--   email_verified_at
--   created_at
--   updated_at
-
-2. palette ( soft delete table - with archive & restore feature )
-
--   id
--   user_id (foreign_key)
--   title
--   colors (object)
--   created_at
--   updated_at
--   deleted_at
+| Users             | Palette ( soft delete table - with archive & restore feature ) |
+| ----------------- | -------------------------------------------------------------- |
+| id (primary_key)  | id (primary_key)                                               |
+| name              | user_id (foreign_key of users table)                           |
+| username          | title                                                          |
+| email             | colors (object)                                                |
+| password          | created_at                                                     |
+| remember_token    | updated_at                                                     |
+| email_verified_at | deleted_at                                                     |
+| created_at        |                                                                |
+| updated_at        |                                                                |
 
 ### References :
 
@@ -63,6 +53,17 @@
 -   blade get current route -> https://stackoverflow.com/questions/17591181/how-to-get-the-current-url-inside-if-statement-blade-in-laravel-4
 
 ---
+
+### Tools Used :
+
+-   Visual Studio Code
+-   DBeaver
+-   Git & Gitahead
+-   Composer
+-   Laravel & PHP
+-   Tailwind.css
+-   Gmail & Mailtrap
+-   Node & NPM
 
 ### To Setup :
 
