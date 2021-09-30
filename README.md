@@ -1,6 +1,6 @@
 ### Laravel Fullstack App ( Laravel Blade, Laravel & MYSQL )
 
-#### A Color-Palette Website which Created by Chen Frederick for Development & Training Purpose
+#### A Color-Palette Website which Created by Chen Frederick, Included Email Blast, Database & Other Features to Become a Successful Fullstack Laravel App
 
 #### Is Live on https://laravel-fd-color-palette.herokuapp.com/ !!
 
@@ -11,7 +11,7 @@
 1. CRUD Backend with Integration in Frontend by MYSQL & Blade
 2. Restore & Archive Functionality ( Soft Delete )
 3. Plugin Integration + Tailwind.css + Fontawesome + SCSS
-4. After Register & Create a Color palette will receive email
+4. After Register & Create a Color palette will receive email ( send email system )
 5. Components & Layout in laravel blade
 6. Deployment to Heroku
 7. Reusable Notification Component
@@ -19,7 +19,7 @@
 
 ---
 
-### DB Column :
+### Database Column :
 
 | Users             | Palette ( soft delete table - with archive & restore feature ) |
 | ----------------- | -------------------------------------------------------------- |
