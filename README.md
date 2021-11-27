@@ -1,4 +1,4 @@
-### Laravel Fullstack App ( Laravel Blade, Laravel & MYSQL )
+## Laravel Fullstack App ( Laravel Blade, Laravel & MYSQL )
 
 #### A Color-Palette Website which Created by Chen Frederick - Included Email Blast, Database & Other Features to Become a Successful Fullstack Laravel App.
 
