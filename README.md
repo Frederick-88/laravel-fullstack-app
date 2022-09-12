@@ -79,6 +79,7 @@
 -   after changed `webpack.mix.js`, since laravel mix is webpack based, you’ll need to compile those files with `npm run dev`.
 -   while you're on development please run `php artisan serve` & `npm run watch`. 1 so you can visit localhost, the other 1 so you don't need to run `npm run dev` for every scss file change you made
 -   its good to have layout in laravel where you can put your link rel in <head> for just 1 time rather than put in all your component
+-   can refer to our personal ms.word notes at drive when you want to regain knowledge after a while - P.S we dont have password in our local mysql
 -   for email setup, here are some examples :
 
 ##### For Mailtrap (local/testing level)
