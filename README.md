@@ -2,7 +2,7 @@
 
 #### A Color-Palette Website which Created by Chen Frederick - Included Email Blast, Database & Other Features to Become a Successful Fullstack Laravel App.
 
-#### Soon Deploy to AWS
+#### Website Link: Soon Deploy to AWS
 
 ---
 
