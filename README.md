@@ -2,7 +2,7 @@
 
 #### A Color-Palette Website which Created by Chen Frederick - Included Email Blast, Database & Other Features to Become a Successful Fullstack Laravel App.
 
-#### Is Live on https://laravel-fd-color-palette.herokuapp.com/ !!
+#### Soon Deploy to AWS
 
 ---
 
