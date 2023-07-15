@@ -63,7 +63,7 @@ class PaletteController extends Controller
         ]);
 
         $current_loggedin_user = Auth::user();
-        Mail::to($current_loggedin_user->email)->send(new AddPaletteEmail($current_loggedin_user->name, $request->title));
+        // Mail::to($current_loggedin_user->email)->send(new AddPaletteEmail($current_loggedin_user->name, $request->title));
 
         return $this->redirectWithMessage('success','Successfully shared palette.');
     }

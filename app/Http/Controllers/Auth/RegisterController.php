@@ -74,7 +74,7 @@ class RegisterController extends Controller
             ]);
 
             $current_loggedin_user = Auth::user();
-            Mail::to($current_loggedin_user->email)->send(new WelcomeEmail($current_loggedin_user->name));
+            // Mail::to($current_loggedin_user->email)->send(new WelcomeEmail($current_loggedin_user->name));
 
             return $this->redirectWithMessage('success','Welcome to FD Palette Community.','/palette-community');
         } catch (\Exception $error) {
